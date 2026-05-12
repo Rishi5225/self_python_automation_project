@@ -2,6 +2,8 @@ import pytest
 #from selenium.webdriver.chrome.options import Options
 import undetected_chromedriver as uc
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 options = uc.ChromeOptions()
@@ -16,6 +18,7 @@ def set_up(browser):
     else:
         driver = uc.Chrome()
     driver.maximize_window()
+    driver.implicitly_wait(10)  # Add implicit wait
 
     
     return driver

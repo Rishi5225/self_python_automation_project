@@ -17,12 +17,12 @@ class TestLoginPage:
 
         page_title = self.driver.title
 
-        if page_title == "Swag Labs":
+        if page_title == "OrangeHRM":
             self.driver.close()
             assert True
         
         else:
-            self.driver.save_screenshot(r"F:\\job_project\\screen_shots\\failed.png")
+            self.driver.save_screenshot(r"F:\\self_python_automation_project\\screen_shots\\failed.png")
             assert False
 
     def test_login(self,set_up):
@@ -37,13 +37,11 @@ class TestLoginPage:
 
         page_title = self.driver.title
 
-        if page_title == "Swag Labs":
+        if page_title == "OrangeHRM":
             self.driver.close()
             assert True
 
         else:
-            self.driver.save_screenshot(r"F:\\job_project\\screen_shots\\failed.png")
+            self.driver.save_screenshot(r"F:\\self_python_automation_project\\screen_shots\\failed.png")
             self.driver.close()
             assert False
-        
-
