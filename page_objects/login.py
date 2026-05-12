@@ -31,16 +31,16 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class Login:
 
-    username_xpath = "//input[@placeholder='Username']"
-    password_xpath = "//input[@placeholder='Password']"
-    login_xpath = "//button[normalize-space()='Login']"
+    username_xpath = "//input[@name='username']"
+    password_xpath = "//input[@name='password']"
+    login_xpath = "//button[@type='submit']"
     
 
     def __init__(self, driver):
         self.driver = driver
         
     def set_username(self, username):
-        username_field = WebDriverWait(self.driver, 10).until(
+        username_field = WebDriverWait(self.driver, 15).until(
             EC.presence_of_element_located((By.XPATH, self.username_xpath))
         )
         username_field.clear()
