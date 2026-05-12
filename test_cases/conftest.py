@@ -48,11 +48,18 @@ def login_setup(set_up):
     driver = set_up
 
     driver.get(ReadConfigProperties.get_url())
+    
+    # Wait for the page to load completely
+    import time
+    time.sleep(3)
 
     login = Login(driver)
 
     login.set_username(ReadConfigProperties.get_username())
     login.set_password(ReadConfigProperties.get_password())
     login.click_login()
+    
+    # Wait for login to complete
+    time.sleep(3)
 
     return driver
