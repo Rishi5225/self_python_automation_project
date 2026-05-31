@@ -161,7 +161,8 @@ def set_up(request):
 
         driver = uc.Chrome(options=options)
 
-    driver.maximize_window()
+    # driver.maximize_window()
+    driver.set_window_size(1920,1080)
     driver.implicitly_wait(10)
 
     print("Browser launched successfully")
