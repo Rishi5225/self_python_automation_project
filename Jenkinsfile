@@ -5,15 +5,6 @@ agent any
 
 stages {
 
-    stage('Clone Repository') {
-
-        steps {
-
-            git 'https://github.com/Rishi5225/self_python_automation_project.git'
-
-        }
-    }
-
     stage('Install Dependencies') {
 
         steps {
@@ -53,5 +44,6 @@ post {
         echo 'Automation Execution Failed'
     }
 }
+
 
 }
