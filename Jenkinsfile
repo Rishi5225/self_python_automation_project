@@ -1,6 +1,6 @@
 pipeline {
 
-```
+
 agent any
 
 stages {
@@ -53,6 +53,5 @@ post {
         echo 'Automation Execution Failed'
     }
 }
-```
 
 }
