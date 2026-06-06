@@ -1,58 +1,75 @@
+
+from beginning and end.
+
+---
+
+# YOUR Jenkinsfile SHOULD LOOK EXACTLY LIKE THIS
+
+:::writing{variant="document" id="54821"}
 pipeline {
 
-```
-agent any
+    agent any
 
-stages {
+    stages {
 
-    stage('Clone Repository') {
+        stage('Clone Repository') {
 
-        steps {
+            steps {
 
-            git 'https://github.com/rishi5225/self_python_automation_project.git'
+                git 'https://github.com/Rishi5225/self_python_automation_project.git'
 
+            }
+        }
+
+        stage('Install Dependencies') {
+
+            steps {
+
+                sh '''
+                python3 -m pip install --upgrade pip
+                python3 -m pip install -r requirements.txt
+                '''
+            }
+        }
+
+        stage('Run Pytest Automation') {
+
+            steps {
+
+                sh '''
+                pytest test_cases/ --browser chrome --headless
+                '''
+            }
         }
     }
 
-    stage('Install Dependencies') {
+    post {
 
-        steps {
+        always {
 
-            sh '''
-            python3 -m pip install --upgrade pip
-            python3 -m pip install -r requirements.txt
-            '''
+            echo 'Pipeline Execution Completed'
         }
-    }
 
-    stage('Run Pytest Automation') {
+        success {
 
-        steps {
+            echo 'Automation Execution Passed'
+        }
 
-            sh '''
-            pytest test_cases/ --browser chrome --headless
-            '''
+        failure {
+
+            echo 'Automation Execution Failed'
         }
     }
 }
+:::
 
-post {
+---
 
-    always {
+# THEN
 
-        echo 'Pipeline Execution Completed'
-    }
+Save file.
 
-    success {
+Then push again:
 
-        echo 'Automation Execution Passed'
-    }
-
-    failure {
-
-        echo 'Automation Execution Failed'
-    }
-}
-```
-
-}
+```bash id="k9m2q4"
+git add .
