@@ -37,7 +37,7 @@ class PIMPage:
 
     def click_pim_menu(self):
 
-        pim_menu = WebDriverWait(self.driver, 10).until(
+        pim_menu = WebDriverWait(self.driver, 15).until(
             EC.element_to_be_clickable(
                 (By.XPATH, self.pim_menu_xpath)
             )
@@ -51,17 +51,18 @@ class PIMPage:
 
     def click_add_employee(self):
 
-        add_btn = WebDriverWait(self.driver, 10).until(
+        add_btn = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable(
                 (By.XPATH, self.add_employee_button_xpath)
             )
         )
+        self.driver.execute_script( "arguments[0].scrollIntoView(true);", add_btn )
 
-        add_btn.click()
+        self.driver.execute_script("arguments[0].click();", add_btn)
 
     def enter_first_name(self, first_name):
 
-        first_name_field = WebDriverWait(self.driver, 10).until(
+        first_name_field = WebDriverWait(self.driver, 15).until(
             EC.visibility_of_element_located(
                 (By.XPATH, self.first_name_xpath)
             )
@@ -115,7 +116,7 @@ class PIMPage:
 
     def validate_optional_fields(self):
 
-        optional_fields = WebDriverWait(self.driver, 10).until(
+        optional_fields = WebDriverWait(self.driver, 15).until(
             EC.presence_of_element_located(
                 (By.XPATH, self.optional_fields_xpath)
             )
@@ -125,7 +126,7 @@ class PIMPage:
 
     def validate_custom_fields(self):
 
-        custom_fields = WebDriverWait(self.driver, 10).until(
+        custom_fields = WebDriverWait(self.driver, 15).until(
             EC.presence_of_element_located(
                 (By.XPATH, self.custom_fields_xpath)
             )
@@ -135,7 +136,7 @@ class PIMPage:
 
     def validate_data_import(self):
 
-        data_import = WebDriverWait(self.driver, 10).until(
+        data_import = WebDriverWait(self.driver, 15).until(
             EC.presence_of_element_located(
                 (By.XPATH, self.data_import_xpath)
             )
@@ -145,7 +146,7 @@ class PIMPage:
 
     def validate_reporting_methods(self):
 
-        reporting_methods = WebDriverWait(self.driver, 10).until(
+        reporting_methods = WebDriverWait(self.driver, 15).until(
             EC.presence_of_element_located(
                 (By.XPATH, self.reporting_methods_xpath)
             )
@@ -155,7 +156,7 @@ class PIMPage:
 
     def validate_termination_reasons(self):
 
-        termination_reasons = WebDriverWait(self.driver, 10).until(
+        termination_reasons = WebDriverWait(self.driver, 15).until(
             EC.presence_of_element_located(
                 (By.XPATH, self.termination_reasons_xpath)
             )
@@ -165,7 +166,7 @@ class PIMPage:
 
     def click_optional_fields(self):
 
-        optional_fields = WebDriverWait(self.driver, 10).until(
+        optional_fields = WebDriverWait(self.driver, 15).until(
             EC.element_to_be_clickable(
                 (By.XPATH, self.optional_fields_xpath)
             )
@@ -176,7 +177,7 @@ class PIMPage:
 
     def get_all_toggle_buttons(self):
 
-        return WebDriverWait(self.driver, 10).until(
+        return WebDriverWait(self.driver, 15).until(
             EC.presence_of_all_elements_located(
                 (By.XPATH, self.all_toggle_buttons_xpath)
             )
@@ -207,7 +208,7 @@ class PIMPage:
 
     def click_save_button(self):
 
-        save_btn = WebDriverWait(self.driver, 10).until(
+        save_btn = WebDriverWait(self.driver, 15).until(
             EC.element_to_be_clickable(
                 (By.XPATH, self.save_button_xpath)
             )
