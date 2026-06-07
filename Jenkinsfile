@@ -1,38 +1,45 @@
 pipeline {
 
+    agent any
 
-agent any
+    stages {
 
-stages {
+        stage('Build Docker Image') {
 
-    stage('Run Automation in Docker') {
+            steps {
 
-        steps {
+                sh '''
+                docker build -t automation-framework:v1 .
+                '''
+            }
+        }
 
-            sh '''
-            docker run automation-framework:v1
-            '''
+        stage('Run Automation in Docker') {
+
+            steps {
+
+                sh '''
+                docker run automation-framework:v1
+                '''
+            }
         }
     }
-}
 
-post {
+    post {
 
-    always {
+        always {
 
-        echo 'Pipeline Execution Completed'
+            echo 'Pipeline Execution Completed'
+        }
+
+        success {
+
+            echo 'Automation Execution Passed'
+        }
+
+        failure {
+
+            echo 'Automation Execution Failed'
+        }
     }
-
-    success {
-
-        echo 'Automation Execution Passed'
-    }
-
-    failure {
-
-        echo 'Automation Execution Failed'
-    }
-}
-
-
 }

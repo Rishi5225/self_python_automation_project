@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class PIMPage:
 
-    add_employee_button_xpath = "//a[text()='Add Employee']"
+    add_employee_button_xpath = "//a[contains(@class,'oxd-topbar-body-nav-tab-item') and contains(.,'Add Employee')]"
 
     first_name_xpath = "//input[@name='firstName']"
 
