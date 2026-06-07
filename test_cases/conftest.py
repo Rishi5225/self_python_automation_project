@@ -115,7 +115,7 @@ def pytest_addoption(parser):
 # ---------------------------------
 # Browser fixture
 # ---------------------------------
-@pytest.fixture()
+@pytest.fixture(scope="class")
 def set_up(request):
 
     browser = request.config.getoption("--browser")
@@ -214,7 +214,7 @@ def set_up(request):
 # ---------------------------------
 # Login fixture
 # ---------------------------------
-@pytest.fixture()
+@pytest.fixture(scope="class")
 def login_setup(set_up):
 
     driver = set_up
