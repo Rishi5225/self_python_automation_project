@@ -1,7 +1,7 @@
 from page_objects.leave_page import LeavePage
 
-
 class TestLeavePage:
+
 
     def test_leave_tabs_validation(self, login_setup):
 
@@ -13,7 +13,6 @@ class TestLeavePage:
         leave.click_element(leave.leave_menu_xpath)
 
         # Validate Top Tabs
-
         assert leave.validate_element_visible(
             leave.apply_tab_xpath
         )
@@ -163,3 +162,4 @@ class TestLeavePage:
         assert leave.validate_element_visible(
             leave.assign_leave_header_xpath
         )
+
