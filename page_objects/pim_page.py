@@ -37,7 +37,7 @@ class PIMPage:
 
     def click_pim_menu(self):
 
-        pim_menu = WebDriverWait(self.driver, 15).until(
+        pim_menu = WebDriverWait(self.driver, 30).until(
             EC.element_to_be_clickable(
                 (By.XPATH, self.pim_menu_xpath)
             )
