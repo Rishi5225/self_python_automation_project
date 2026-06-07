@@ -134,6 +134,7 @@ def set_up(request):
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--start-maximized")
+        options.add_argument("--window-size=1920,1080")
 
         driver = uc.Chrome(options=options)
 
@@ -158,10 +159,18 @@ def set_up(request):
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--start-maximized")
+        options.add_argument("--window-size=1920,1080")
 
         driver = uc.Chrome(options=options)
 
-    driver.maximize_window()
+    try:
+        driver.maximize_window()
+    except Exception:
+        try:
+            driver.set_window_size(1920,1080)
+        except Exception:
+            pass
+
     driver.implicitly_wait(10)
 
     print("Browser launched successfully")
@@ -171,7 +180,24 @@ def set_up(request):
     # ---------------------------------
     # Screenshot on failure
     # ---------------------------------
-    if request.node.rep_call.failed:
+    # if request.node.rep_call.failed:
+
+    #     screenshot_path = f"screenshots/{request.node.name}.png"
+
+    #     driver.save_screenshot(screenshot_path)
+
+    #     print(f"Screenshot saved at: {screenshot_path}")
+
+    # driver.delete_all_cookies()
+    # driver.quit()
+
+    # print("Browser closed successfully")
+
+    if hasattr(request.node, "rep_call") and request.node.rep_call.failed:
+
+        import os
+
+        os.makedirs("screenshots", exist_ok=True)
 
         screenshot_path = f"screenshots/{request.node.name}.png"
 
